@@ -1,72 +1,47 @@
+# requirements_dev.txt we use for the testing
+It makes it easier to install and manage dependencies for development and testing, separate from the dependencies required for production.
 
----
+# difference between requirements_dev.txt and requirements.txt
 
-# Python Project Template
+requirements.txt is used to specify the dependencies required to run the production code of a Python project, while requirements_dev.txt is used to specify the dependencies required for development and testing purposes.
 
-This project is structured to support both production and development environments with a focus on clean code, testing, and configuration management.
+# tox.ini
+We use if for the testing in the python package testing against different version of the python 
 
-## Installation
+## how tox works tox enviornment creation
+1. Install depedencies and packages 
+2. Run commands
+3. Its a combination of the (virtualenvwrapper and makefile)
+4. It creates a .tox
 
-### Production
-Install the production dependencies:
 
-```bash
-pip install -r requirements.txt
-```
+# pyproject.toml
+it is being used for configuration the python project it is a alternative of the setup.cfg file. its containts configuration related to the build system
+such as the build tool used package name version author license and dependencies
 
-### Development
-For development and testing, install the development dependencies:
+# setup.cfg
+In summary, setup.cfg is used by setuptools to configure the packaging and installation of a Python projec
 
-```bash
-pip install -r requirements_dev.txt
-```
+# Testing python application
+*types of testing*
+1. Automated testing 
+2. Manual testing
 
-### Differences Between `requirements.txt` and `requirements_dev.txt`
-- **`requirements.txt`**: Contains dependencies required to run the production code.
-- **`requirements_dev.txt`**: Contains additional dependencies for development and testing.
+*Mode of testing*
+1. Unit testing
+2. Integration tests
 
-## Testing
+*Testing frameworks*
 
-This project uses `tox` for testing across multiple Python versions.
+1. pytest
+2. unittest
+3. robotframework
+4. selenium
+5. behave
+6. doctest
 
-### `tox.ini`
-- **Purpose**: Testing against different Python versions.
-- **How It Works**:
-  - Creates isolated environments using `.tox`
-  - Installs dependencies and packages
-  - Runs specified commands
-- Combines functionalities of `virtualenvwrapper` and `makefile`.
+# check with the code style formatting and syntax(coding standard)
 
-### `pyproject.toml`
-- **Purpose**: Configuration of the Python project, an alternative to `setup.cfg`.
-- **Contains**: Configuration related to the build system, such as package name, version, author, license, and dependencies.
-
-### `setup.cfg`
-- **Purpose**: Used by `setuptools` to configure packaging and installation.
-
-## Testing Python Applications
-
-### Types of Testing
-- **Automated Testing**
-- **Manual Testing**
-
-### Modes of Testing
-- **Unit Testing**
-- **Integration Testing**
-
-### Testing Frameworks
-- **pytest**
-- **unittest**
-- **robotframework**
-- **selenium**
-- **behave**
-- **doctest**
-
-## Code Style and Syntax Checking
-
-Ensure adherence to coding standards using the following tools:
-- **pylint**
-- **flake8** (includes `pylint`, `pycodestyle`, `mccabe`)
-- **pycodestyle**
-
----
+1. pylint
+2. flake8(it is best because it containt 3 library pylint pycodestyle mccabe)
+3. pycodestyle
