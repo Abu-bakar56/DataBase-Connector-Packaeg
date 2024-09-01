@@ -61,3 +61,28 @@ class mongo_operation:
         datajson=json.loads(dataframe.to_json(orient='record'))
         collection=self.create_collection()
         collection.insert_many(datajson)
+
+    def retrieve_data(self, query: dict = None, collection_name: str = None) -> List[Dict]:
+        collection = self.create_collection(collection_name)
+        if query is None:
+            query = {}
+        return list(collection.find(query))
+
+    def update_record(self, query: dict, update_values: dict, collection_name: str = None) -> Any:
+        collection = self.create_collection(collection_name)
+        return collection.update_one(query, {"$set": update_values})
+
+    def delete_record(self, query: dict, collection_name: str = None) -> Any:
+        collection = self.create_collection(collection_name)
+        return collection.delete_one(query)
+
+    def check_collection_exists(self, collection_name: str) -> bool:
+        database = self.create_database()
+        return collection_name in database.list_collection_names()
+
+    def drop_collection(self, collection_name: str) -> None:
+        database = self.create_database()
+        if self.check_collection_exists(collection_name):
+            database.drop_collection(collection_name)
+        else:
+            print(f"Collection '{collection_name}' does not exist.")
