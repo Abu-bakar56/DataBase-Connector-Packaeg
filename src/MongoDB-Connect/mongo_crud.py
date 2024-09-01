@@ -1,10 +1,9 @@
 from typing import Any
 import os
 import pandas as pd
-import pymongo
+from pymongo.mongo_client import MongoClient
 import json
 from ensure import ensure_annotations
-
 
 
 class mongo_operation:
