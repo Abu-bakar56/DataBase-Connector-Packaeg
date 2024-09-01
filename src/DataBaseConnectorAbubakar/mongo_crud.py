@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List, Dict, Tuple
 import os
 import pandas as pd
 from pymongo.mongo_client import MongoClient
@@ -63,10 +63,10 @@ class mongo_operation:
         collection.insert_many(datajson)
 
     def retrieve_data(self, query: dict = None, collection_name: str = None) -> List[Dict]:
-        collection = self.create_collection(collection_name)
-        if query is None:
-            query = {}
-        return list(collection.find(query))
+     collection = self.create_collection(collection_name)
+     if query is None:
+        query = {}
+     return list(collection.find(query))
 
     def update_record(self, query: dict, update_values: dict, collection_name: str = None) -> Any:
         collection = self.create_collection(collection_name)
